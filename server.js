@@ -8,7 +8,7 @@ const server = app.listen(8000, () => {
 });
 const io = socket(server);
 
-const tasks = []
+let tasks =[];
 
 io.on('connection', (socket) => {
     socket.emit('updateData', tasks);
@@ -28,7 +28,6 @@ io.on('connection', (socket) => {
     });
 });
 
-
 app.use((req, res) => {
-    res.status(404).json({ message: 'Not found...' });
+    res.status(404).send({ message: 'Not found...' });
 });
